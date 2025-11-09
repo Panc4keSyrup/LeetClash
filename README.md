@@ -1,22 +1,25 @@
 <div align="center">
-  
-  # ⚔️ LeetClash ⚔️
-  
-  <p align="center" style="font-size: 24px; font-weight: bold; color: #FF5733;">
-    LC
-  </p>
-  
-  [![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
-  [![Powered by Firebase](https://img.shields.io/badge/Powered%20by-Firebase-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
-  [![AI by Gemini](https://img.shields.io/badge/AI%20by-Gemini-4285F4?style=for-the-badge&logo=google)](https://deepmind.google/technologies/gemini/)
-  
-  <h3 align="center" style="color: #FF5733; margin-top: 20px;">
-    The Ultimate Coding Battle Arena
-  </h3>
-  
-  <p align="center" style="font-style: italic; margin-bottom: 30px;">
-    Challenge yourself or duel with other programmers in a race against time and HP!
-  </p>
+
+<img src="assets/logo.png" alt="LeetClash Logo" width="400" style="background-color: #001122; padding: 20px; border-radius: 15px; margin: 20px 0;"/>
+
+<div style="background: linear-gradient(45deg, #FF5733, #FFC300); padding: 2px; border-radius: 10px; margin: 20px 0;">
+  <h1 align="center" style="color: white; margin: 0; padding: 10px;">
+    LeetClash
+  </h1>
+</div>
+
+[![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Powered by Firebase](https://img.shields.io/badge/Powered%20by-Firebase-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
+[![AI by Gemini](https://img.shields.io/badge/AI%20by-Gemini-4285F4?style=for-the-badge&logo=google)](https://deepmind.google/technologies/gemini/)
+
+<h3 align="center" style="color: #FF5733; margin: 25px 0;">
+  🏰 The Ultimate Coding Battle Arena ⚔️
+</h3>
+
+<p align="center" style="font-style: italic; font-size: 1.2em; color: #666; margin-bottom: 30px; max-width: 600px;">
+  Challenge yourself or duel with other programmers in an epic battle of code, where time is your enemy and efficiency is your sword!
+</p>
+
 </div>
 
 ---
