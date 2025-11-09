@@ -1,6 +1,18 @@
-# LeetClash 🗡️
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Panc4keSyrup/LeetClash/master/assets/logo.png" alt="LeetClash Logo" width="300" height="300" style="display: block; margin: auto;"/>
+  
+  # LeetClash 🗡️
+  
+  [![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+  [![Powered by Firebase](https://img.shields.io/badge/Powered%20by-Firebase-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
+  [![AI by Gemini](https://img.shields.io/badge/AI%20by-Gemini-4285F4?style=for-the-badge&logo=google)](https://deepmind.google/technologies/gemini/)
+  
+  ### The Ultimate Coding Battle Arena
+  
+  *Challenge yourself or duel with other programmers in a race against time and HP!*
+</div>
 
-LeetClash is an exciting real-time competitive coding platform that combines algorithmic problem-solving with a unique battle mechanic. Challenge yourself or duel with other programmers in a race against time and HP!
+---
 
 ## Features
 
