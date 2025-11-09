@@ -1,5 +1,6 @@
 <div align="center">
-<img width="150" height="150" alt="LeetClash Logo" src="https://raw.githubusercontent.com/Panc4keSyrup/LeetClash/master/assets/logo.png" />
+
+<img width="512" height="512" alt="cf7502f4-8ee3-4d9f-9308-4762e65a71c0" src="https://github.com/user-attachments/assets/0ca67ad4-ea52-4e21-a87a-ce84da7d32bb" />
 
 
 
