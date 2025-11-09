@@ -1,3 +1,4 @@
+/* MP-FIX-APPLIED */
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { GoogleGenAI, Type } from "@google/genai";
@@ -17,17 +18,16 @@ const HP_REGAIN = {
 
 // --- Start of services/firebase.ts ---
 const firebaseConfig = {
-  apiKey: "AIzaSyBFZTUF2GVbTv9bkzRwpDbly0SmEyunyr4",
-  authDomain: "leetclash-1fb4d.firebaseapp.com",
-  databaseURL: "https://leetclash-1fb4d.firebaseio.com",
-  projectId: "leetclash-1fb4d",
-  storageBucket: "leetclash-1fb4d.appspot.com",
-  messagingSenderId: "531481099673",
-  appId: "1:531481099673:web:324bd39c75735e1597e708",
-  measurementId: "G-5E3JHYYM47"
+apiKey: "AIzaSyAGAg9LocluM8CIy6k2gsJtmX6bZD3vb4o",
+authDomain: "leetclash2.firebaseapp.com",
+databaseURL: "https://leetclash2-default-rtdb.firebaseio.com/",
+projectId: "leetclash2",
+storageBucket: "leetclash2.firebasestorage.app",
+messagingSenderId: "907615790245",
+appId: "1:907615790245:web:745cae12be99d0013e194c"
 };
 const appFirebase = initializeApp(firebaseConfig);
-const db = getDatabase(appFirebase);
+const db = getDatabase(appFirebase, (globalThis.process?.env?.RTDB_URL || undefined));
 // --- End of services/firebase.ts ---
 
 // --- Start of services/geminiService.ts ---
@@ -382,49 +382,63 @@ const createGame = async (count, difficulty, prompts) => {
 };
 
 const joinGame = async (gameId) => {
-    const normalizedGameId = gameId.toUpperCase();
-    const gameRef = getGameRef(normalizedGameId);
-    
-    try {
-        const result = await runTransaction(gameRef, (currentGame) => {
-            if (!currentGame) {
-                return; 
-            }
-            if (currentGame.players.playerB) {
-                return;
-            }
-
-            const playerB = {
-                name: 'Player B',
-                hp: 100,
-                currentProblem: 0,
-                code: currentGame.problems[0].template,
-                isSubmitting: false,
-            };
-            currentGame.players.playerB = playerB;
-            currentGame.status = 'playing';
-            currentGame.lastTickTime = Date.now();
-            currentGame.logs.unshift('Player B joined. The clash begins!');
-            return currentGame;
-        });
-
-        if (!result.committed || !result.snapshot.exists()) {
-             const gameSnapshot = await get(gameRef);
-             if (!gameSnapshot.exists()) throw new Error("Game not found.");
-             if (gameSnapshot.val().players.playerB) throw new Error("Game is full.");
-             throw new Error("Failed to join the game. Please try again.");
-        }
-
-        return { game: result.snapshot.val(), playerId: 'playerB' };
-
-    } catch (error) {
-        console.error("Join Game Transaction error:", error);
-        if (error.message.includes("full") || error.message.includes("not found")) {
-            throw error;
-        }
-        throw new Error("An error occurred while trying to join the game.");
+  const id = (gameId || "").trim();
+  const gameRef = ref(db, `games/${id}`);
+  try {
+    const preSnap = await get(gameRef);
+    if (!preSnap.exists()) {
+      throw new Error("Game not found.");
     }
-};
+
+    const result = await runTransaction(
+      gameRef,
+      (currentGame) => {
+        if (!currentGame) return currentGame; // not found → abort
+        if (!currentGame.players || !currentGame.players.playerA) return; // invalid lobby → abort
+        if (currentGame.players.playerB) {
+        //    already taken by someone else → but backfill missing name
+        if (!currentGame.players.playerB.name) {
+            currentGame.players.playerB.name = 'Player B';
+            currentGame.logs = Array.isArray(currentGame.logs) ? currentGame.logs : [];
+            currentGame.logs.unshift('Filled missing Player B name.');
+        }
+        return currentGame; // commit with possible backfill
+        }
+
+        const playerB = {
+          id: 'playerB',
+           name: 'Player B', 
+          hp: 100,
+          currentProblem: 0,
+          code: currentGame.problems[0].template,
+          isSubmitting: false,
+        };
+        currentGame.players.playerB = playerB;
+        currentGame.status = 'playing';
+        currentGame.lastTickTime = Date.now();
+        currentGame.logs = Array.isArray(currentGame.logs) ? currentGame.logs : [];
+        currentGame.logs.unshift('Player B joined. The clash begins!');
+        return currentGame; // commit
+      },
+      { applyLocally: false }
+    );
+
+    if (!result.committed || !result.snapshot.exists()) {
+      const gameSnapshot = await get(gameRef);
+      if (!gameSnapshot.exists()) throw new Error("Game not found.");
+      if (gameSnapshot.val()?.players?.playerB) throw new Error("Game is full.");
+      throw new Error("Failed to join the game. Please try again.");
+    }
+
+    return { game: result.snapshot.val(), playerId: 'playerB' };
+  } catch (error) {
+    console.error("Join Game Transaction error:", error);
+    if (error.message.includes("full") || error.message.includes("not found")) {
+      throw error;
+    }
+    throw new Error("An error occurred while trying to join the game.");
+  }
+};;
 
 const onGameUpdate = (gameId, callback) => {
     const gameRef = getGameRef(gameId);
@@ -489,7 +503,7 @@ const tickMultiplayerGame = (gameId) => {
             const drainedGame = applyHPDrainMultiplayer(currentGame);
             return checkGameOverMultiplayer(drainedGame);
         }
-        return currentGame;
+        return currentGame;h.getTitle
     });
 };
 
@@ -830,7 +844,7 @@ const Lobby = ({ onGameReady }) => {
         setIsLoading(true);
         setError(null);
         try {
-            const { game, playerId } = await joinGame(joinGameId.toUpperCase());
+            const { game, playerId } = await joinGame((joinGameId || "").trim());
             onGameReady(game, playerId);
         } catch (err) {
             setError(err.message || 'Failed to join game. Check the ID and try again.');

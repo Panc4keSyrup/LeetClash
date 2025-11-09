@@ -1,21 +1,15 @@
-import { initializeApp } from 'firebase/app';
-import { getDatabase } from 'firebase/database';
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBFZTUF2GVbTv9bkzRwpDbly0SmEyunyr4",
-  authDomain: "leetclash-1fb4d.firebaseapp.com",
-  databaseURL: "https://leetclash-1fb4d.firebaseio.com",
-  projectId: "leetclash-1fb4d",
-  storageBucket: "leetclash-1fb4d.appspot.com",
-  messagingSenderId: "531481099673",
-  appId: "1:531481099673:web:324bd39c75735e1597e708",
-  measurementId: "G-5E3JHYYM47"
+  apiKey: "AIzaSyAGAg9LocluM8CIy6k2gsJtmX6bZD3vb4o",
+  authDomain: "leetclash2.firebaseapp.com",
+  databaseURL: "https://leetclash2-default-rtdb.firebaseio.com/", // <- exact URL from Console
+  projectId: "leetclash2",
+  storageBucket: "leetclash2.appspot.com",
+  messagingSenderId: "907615790245",
+  appId: "1:907615790245:web:745cae12be99d0013e194c"
 };
 
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Get a reference to the database service
-export const db = getDatabase(app);
+export const app = initializeApp(firebaseConfig);
+export const db  = getDatabase(app);
