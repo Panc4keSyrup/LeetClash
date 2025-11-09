@@ -1,0 +1,5 @@
+{
+  "name": "LeetClash",
+  "description": "A competitive coding game where two players race to solve programming challenges to maintain their HP. Incorrect or slow submissions drain HP, while correct solutions regain it. The last player standing wins.",
+  "requestFramePermissions": []
+}
