@@ -1,6 +1,7 @@
 <div align="center">
+<img width="1024" height="1024" alt="cf7502f4-8ee3-4d9f-9308-4762e65a71c0" src="https://github.com/user-attachments/assets/56cf536a-d329-4709-84d4-b97214c3b448" />
 
-<img src="https://github.com/Panc4keSyrup/LeetClash/raw/master/assets/logo.png" alt="LeetClash Logo" width="400" style="background-color: #001122; padding: 20px; border-radius: 15px; margin: 20px 0;"/>
+
 
 <div style="background: linear-gradient(45deg, #FF5733, #FFC300); padding: 2px; border-radius: 10px; margin: 20px 0;">
   <h1 align="center" style="color: white; margin: 0; padding: 10px;">
