@@ -1,15 +1,22 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Panc4keSyrup/LeetClash/master/assets/logo.png" alt="LeetClash Logo" width="300" height="300" style="display: block; margin: auto;"/>
   
-  # LeetClash 🗡️
+  # ⚔️ LeetClash ⚔️
+  
+  <p align="center" style="font-size: 24px; font-weight: bold; color: #FF5733;">
+    LC
+  </p>
   
   [![Built with React](https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
   [![Powered by Firebase](https://img.shields.io/badge/Powered%20by-Firebase-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
   [![AI by Gemini](https://img.shields.io/badge/AI%20by-Gemini-4285F4?style=for-the-badge&logo=google)](https://deepmind.google/technologies/gemini/)
   
-  ### The Ultimate Coding Battle Arena
+  <h3 align="center" style="color: #FF5733; margin-top: 20px;">
+    The Ultimate Coding Battle Arena
+  </h3>
   
-  *Challenge yourself or duel with other programmers in a race against time and HP!*
+  <p align="center" style="font-style: italic; margin-bottom: 30px;">
+    Challenge yourself or duel with other programmers in a race against time and HP!
+  </p>
 </div>
 
 ---
